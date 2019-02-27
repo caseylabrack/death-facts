@@ -14,7 +14,7 @@ data = read_tsv("by-age.tsv") %>%
 
 p = ggplot(data, aes(Age,Rate)) +
   geom_area(fill = hcl(60,25,85)) +
-  scale_x_continuous(expand = c(0,0)) +
+  scale_x_continuous(expand = c(0,0), labels = function(x){ if_else(x==0,"<1",paste0(x))}) +
   scale_y_continuous(expand = c(0,0), limits = c(0,.085),
                      labels = function (x) { x * 100 }, breaks = c(0,.01,.02,.04,.08)) +
   labs(title = "The Beginning of the End", subtitle = "Deaths per Hundred People by Age",
