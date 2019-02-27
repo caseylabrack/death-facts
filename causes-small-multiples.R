@@ -41,7 +41,7 @@ ggplot(topNineCauses, aes(x = age, y = deaths, fill = cause)) +
        subtitle = "Deaths by Causes and Age",
        caption = 'Data: "Underlying Cause of Death 1999-2014," WONDER Online Database, Centers for Disease Control and Prevention.') +
   theme(legend.position = "none",
-        plot.margin = margin(t = 0, r = 10, b = 0, l = 0, unit = "pt"),
+        plot.margin = margin(t = 6, r = 10, b = 6, l = 6, unit = "pt"),
         axis.text.y = element_blank(),
         axis.title.y = element_blank(),
         axis.ticks.y = element_blank(),
