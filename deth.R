@@ -10,7 +10,7 @@ theme_set(
                                   margin = margin(t = 12, r = 0, b = 0, l = 0, unit = "pt")),
       legend.position = "bottom", legend.justification = "right",
       legend.key.size = unit(9, "pt"),
-      plot.margin = margin(t = 6, r = 10, b = 2, l = 2, unit = "pt")
+      plot.margin = margin(t = 6, r = 12, b = 2, l = 6, unit = "pt")
     )
 )
 

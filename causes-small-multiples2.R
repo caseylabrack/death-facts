@@ -3,18 +3,10 @@ library(grid)
 
 source("deth.R")
 
+dev.off()
+
 data = read_csv("by-age+cause.csv") %>% 
   select(-code)
-
-data$cause = factor(data$cause)
-data$cause = data$cause %>% fct_lump(n = 2, w = data$deaths)
-
-p1 = ggplot(data, aes(age, deaths, fill = cause)) +
-  geom_area() 
-# +
-#   facet_wrap(vars(cause), ncol = 5)
-
-p1
 
 numberOfCauses = 15
 
@@ -32,10 +24,28 @@ shareOfDeaths = data %>%
   mutate(share = deaths/total) %>% 
   select(-total,-deaths)
 
-shareOfDeaths$cause = factor(shareOfDeaths$cause, levels = topCauses$cause)
+mean = shareOfDeaths %>%
+  group_by(cause) %>% 
+  summarize(mean = mean(share)) %>% 
+  arrange(mean)
+  
+shareOfDeaths$cause = factor(shareOfDeaths$cause, levels = rev(mean$cause))
 
-p2 = ggplot(shareOfDeaths, aes(age,share)) +
-  geom_area() +
-  facet_wrap(vars(cause), ncol = 3)
+p = ggplot(shareOfDeaths, aes(age,share)) +
+  geom_area(fill = defaultColor) +
+  scale_y_continuous(expand = c(0,0), limits = c(0,.6), 
+                     breaks = seq(0,.6,.2), labels = function (x) { if_else(x==.6, "60%", as.character(x * 100)) }) +
+  scale_x_continuous(expand = c(0,0), name = "Age") +
+  labs(title = "Common Causes of Death at Every Age", subtitle = "Share of Deaths (Out of the Top 15 Causes)",
+       caption = 'Data: "Underlying Cause of Death 1999-2017," WONDER Online Database, Centers for Disease Control and Prevention.') +
+  facet_wrap(vars(cause), ncol = 3) +
+  theme(axis.title.y = element_blank(),
+        panel.spacing = unit(12,"pt"))
 
-# p2
+g = ggplotGrob(p)
+g$layout$l[g$layout$name == "title"] <- 2
+g$layout$l[g$layout$name == "subtitle"] <- 2
+g$layout$l[g$layout$name == "caption"] <- 2
+grid.draw(g)
+
+ggsave("_export/common-causes.png", plot = g, width = 5, height = 8, dpi = 300, units = "in")
