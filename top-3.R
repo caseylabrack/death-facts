@@ -29,7 +29,7 @@ ggplot(dataAll, aes(age, deaths, fill = cause)) +
                     guide = guide_legend(reverse = TRUE),
                     name = "") +
   labs(title = "It'll Probably be Heart Disease or Cancer", subtitle = "Total Deaths by Age",
-       caption = 'Data: "Underlying Cause of Death 1999-2017," WONDER Online Database, Centers for Disease Control and Prevention.\n\nNote: All deaths at age 100 and above are binned at 100, hence the little spike at the end.') +
+       caption = 'Data: "Underlying Cause of Death 1999-2017," WONDER Online Database, Centers for Disease Control and Prevention.\n\nNote: Age 100 is a catch-all for all ages above 99 in the CDC data, hence the spike of deaths at that age.') +
   theme(axis.text.y = element_blank(),
         axis.ticks.y = element_blank(),
         axis.line.y = element_blank(),
