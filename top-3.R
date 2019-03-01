@@ -25,7 +25,7 @@ ggplot(dataAll, aes(age, deaths, fill = cause)) +
   scale_x_continuous(expand = c(0,0), name = "Age") +
   scale_y_continuous(expand = c(0,0), limits = c(0,1000000)) +
   scale_fill_manual(values = c(defaultColor, hcl(0,0,40), hcl(0,0,20)),
-                    labels = c("Next 13 top causes", "Cancer", "Heart disease"),
+                    labels = c("Next 13 biggest causes", "Cancer", "Heart disease"),
                     guide = guide_legend(reverse = TRUE),
                     name = "") +
   labs(title = "It'll Probably be Heart Disease or Cancer", subtitle = "Total Deaths by Age",
