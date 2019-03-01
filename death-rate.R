@@ -13,7 +13,7 @@ data = read_tsv("by-age.tsv") %>%
   filter(!is.na(Population))
 
 p = ggplot(data, aes(Age,Rate)) +
-  geom_area(fill = hcl(60,25,85)) +
+  geom_area(fill = defaultColor) +
   scale_x_continuous(expand = c(0,0), labels = function(x){ if_else(x==0,"<1",paste0(x))}) +
   scale_y_continuous(expand = c(0,0), limits = c(0,.085),
                      labels = function (x) { x * 100 }, breaks = c(0,.01,.02,.04,.08)) +
