@@ -29,4 +29,4 @@ g$layout$l[g$layout$name == "subtitle"] <- 2
 g$layout$l[g$layout$name == "caption"] <- 2
 grid.draw(g)
 
-ggsave("_export/rate.png", plot = g, width = 4.5, height = 3, dpi = 300, units = "in")
+ggsave("_export/rate.png", plot = g, width = 5, height = 3, dpi = 300, units = "in")
