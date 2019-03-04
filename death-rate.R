@@ -17,7 +17,7 @@ p = ggplot(data, aes(Age,Rate)) +
   scale_x_continuous(expand = c(0,0), labels = function(x){ if_else(x==0,"<1",paste0(x))}) +
   scale_y_continuous(expand = c(0,0), limits = c(0,.085),
                      labels = function (x) { x * 100 }, breaks = c(0,.01,.02,.04,.08)) +
-  labs(title = "The Beginning of the End", subtitle = "Deaths per Hundred People by Age",
+  labs(title = "More Frail Every Year", subtitle = "Deaths per Hundred People by Age",
        caption = 'Data: "Underlying Cause of Death 1999-2017," WONDER Online Database, Centers for Disease Control and Prevention.') +
   theme(panel.grid.minor = element_blank(),
         axis.title.y = element_blank(),

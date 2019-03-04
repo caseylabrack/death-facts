@@ -36,7 +36,7 @@ p = ggplot(shareOfDeaths, aes(age,share)) +
   scale_y_continuous(expand = c(0,0), limits = c(0,.6), 
                      breaks = seq(0,.6,.2), labels = function (x) { if_else(x==.6, "60%", as.character(x * 100)) }) +
   scale_x_continuous(expand = c(0,0), name = "Age") +
-  labs(title = "Common Causes of Death at Every Age", subtitle = "Share of Deaths (Out of the Top 15 Causes)",
+  labs(title = "Common Causes of Death at Every Age", subtitle = "Share of Deaths (Versus Other Top Causes)",
        caption = 'Data: "Underlying Cause of Death 1999-2017," WONDER Online Database, Centers for Disease Control and Prevention.') +
   facet_wrap(vars(cause), ncol = 3) +
   theme(axis.title.y = element_blank(),

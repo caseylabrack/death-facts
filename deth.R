@@ -14,4 +14,4 @@ theme_set(
     )
 )
 
-defaultColor = hcl(60,25,85)
+defaultColor = hcl(60,25,80)
